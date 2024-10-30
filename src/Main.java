@@ -25,6 +25,7 @@ class Employee implements Person {
     private String firstName;
     private String lastName;
     private int age;
+    private static final int RETIREMENT_AGE = 62;
 
     // Constructor
     public Employee(String firstName, String lastName, int age) {
@@ -33,10 +34,16 @@ class Employee implements Person {
         this.age = age;
     }
 
+    // Calculate years left until retirement
+    public int yearsUntilRetirement() {
+        return Math.max(0, RETIREMENT_AGE - age);
+    }
+
     // Implement the getInfo method
     @Override
     public void getInfo() {
-        System.out.println("Employee - Name: " + firstName + " " + lastName + ", Age: " + age);
+        System.out.println("Employee - Name: " + firstName + " " + lastName + ", Age: " + age
+                + ", Years Until Retirement: " + yearsUntilRetirement());
     }
 }
 
@@ -52,4 +59,3 @@ public class Main {
         employee.getInfo();
     }
 }
-//
